@@ -25,7 +25,6 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.3' # Not needed with a .ruby-version file
-          bundler-cache: true
       - uses: borales/actions-yarn@v2.0.0
         with:
           cmd: install
