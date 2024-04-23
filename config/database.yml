@@ -1,10 +1,11 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  host: <%= ENV.fetch('DATABASE_HOST') %>
-  username: <%= ENV.fetch('POSTGRES_USER') %>
-  password: <%= ENV.fetch('POSTGRES_PASSWORD') %>
-  database: <%= ENV.fetch('POSTGRES_DB') %>
+  DATABASE_URL: postgres://postgres:@localhost:5432/test
+  REDIS_URL: redis://localhost:6379/0
+  RAILS_ENV: test
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: postgres
   pool: 5
   variables:
     statement_timeout: 5000
@@ -14,7 +15,11 @@ development:
 
 test:
   <<: *default
-  database: myapp_test
+  DATABASE_URL: postgres://postgres:@localhost:5432/test
+  REDIS_URL: redis://localhost:6379/0
+  RAILS_ENV: test
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: postgres
 
 production:
   <<: *default
